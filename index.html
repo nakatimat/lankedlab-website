@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LANKED LAB - Studio de Desenvolvimento de Jogos Indie.">
+    <title>LANKED LAB | Game Studio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ededed;
+            --accent-color: #00f2ff; /* Um ciano neon para o studio */
+            --secondary-color: #7000ff;
+            --font-main: 'Inter', sans-serif;
+            --font-display: 'Orbitron', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
+        }
+
+        p {
+            font-size: 1.1rem;
+            letter-spacing: 0.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-color);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        .links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .links a:hover {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        /* Background com efeito de profundidade - Atuando com o script */
+        .bg-glow {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none; /* Garante que o brilho não atrapalhe os cliques nos links */
+            transition: transform 0.1s ease-out; /* Suaviza levemente o movimento */
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .links {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <main class="container">
+        <div class="status-badge">Próximo lançamento em breve</div>
+        <h1>LANKED LAB</h1>
+        <p>Criando experiências imersivas e mundos digitais de alta performance.</p>
+        
+        <nav class="links">
+            <a href="#">Games</a>
+            <a href="#">X (Twitter)</a>
+            <a href="#">LinkedIn</a>
+            <a href="mailto:contato@lankedlab.com">Contato</a>
+        </nav>
+    </main>
+
+    <script>
+        const glow = document.querySelector('.bg-glow');
+        
+        document.addEventListener('mousemove', (e) => {
+            // Atualiza a posição do brilho baseado na coordenada do mouse
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            glow.style.left = x + 'px';
+            glow.style.top = y + 'px';
+        });
+    </script>
+
+</body>
+</html>
